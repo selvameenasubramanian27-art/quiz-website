@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard - Smart AI Quiz</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .leaderboard-card {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .leaderboard-list {
+      margin-top: 2rem;
+    }
+    .rank-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.75rem;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .rank-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--glass-border);
+    }
+    .rank-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      width: 40px;
+      color: var(--gray-light);
+    }
+    .rank-1 .rank-number { color: #FFD700; } /* Gold */
+    .rank-2 .rank-number { color: #C0C0C0; } /* Silver */
+    .rank-3 .rank-number { color: #CD7F32; } /* Bronze */
+    
+    .rank-1 { background: rgba(255, 215, 0, 0.1); border-color: rgba(255, 215, 0, 0.3); }
+    .rank-2 { background: rgba(192, 192, 192, 0.1); border-color: rgba(192, 192, 192, 0.3); }
+    .rank-3 { background: rgba(205, 127, 50, 0.1); border-color: rgba(205, 127, 50, 0.3); }
+
+    .rank-details {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .player-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .player-meta {
+      font-size: 0.8rem;
+      color: var(--gray-light);
+    }
+    .player-score {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      text-align: right;
+    }
+    .player-score span {
+      font-size: 0.9rem;
+      color: var(--gold);
+      display: block;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--gray-light);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container animate-fade-in">
+    <nav class="navbar glass-card">
+      <div class="logo">
+        <i class="fa-solid fa-trophy"></i>
+        <span>Leaderboard</span>
+      </div>
+      <div>
+        <button class="btn btn-secondary" onclick="goBack()">Back to Dashboard</button>
+      </div>
+    </nav>
+    
+    <div class="glass-card leaderboard-card">
+      <div class="text-center mb-4">
+        <h1 style="color: var(--gold); font-size: 2.5rem;">Top 10 Performers</h1>
+        <p style="color: var(--gray-light)">Can you reach the number one spot?</p>
+      </div>
+      
+      <div class="leaderboard-list" id="leaderboard-list">
+        <!-- populated via js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/leaderboard.js"></script>
+</body>
+</html>

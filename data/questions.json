@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "type": "mcq",
+    "question": "What does HTML stand for?",
+    "options": [
+      "Hyper Text Preprocessor",
+      "Hyper Text Markup Language",
+      "Hyper Text Multiple Language",
+      "Hyper Tool Multi Language"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 2,
+    "type": "mcq",
+    "question": "Which styling language is used to style web pages?",
+    "options": [
+      "HTML",
+      "JQuery",
+      "CSS",
+      "XML"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 3,
+    "type": "mcq",
+    "question": "What does HTTP stand for?",
+    "options": [
+      "HyperText Transfer Protocol",
+      "HyperText Transmission Protocol",
+      "HyperText Test Protocol",
+      "HyperTransfer Text Protocol"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 4,
+    "type": "voice",
+    "question": "What is the primary scripting language for the web?",
+    "keyword": "javascript"
+  },
+  {
+    "id": 5,
+    "type": "voice",
+    "question": "Which company developed the React library?",
+    "keyword": "facebook"
+  }
+]

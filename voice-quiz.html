@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Quiz - Smart AI Quiz</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .quiz-container { max-width: 800px; margin: 0 auto; }
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .timer {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      background: rgba(255, 76, 76, 0.2);
+      border: 1px solid var(--danger);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .question-block {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 2rem;
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .mic-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    .mic-btn {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border: none;
+      color: var(--royal-blue);
+      font-size: 2.5rem;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mic-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+    }
+    .mic-btn.recording {
+      background: linear-gradient(135deg, #FF4C4C, #CC0000);
+      color: var(--white);
+      animation: micPulse 1.5s infinite;
+      box-shadow: 0 0 20px rgba(255, 76, 76, 0.5);
+    }
+    
+    @keyframes micPulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 76, 76, 0.7); }
+      70% { box-shadow: 0 0 0 25px rgba(255, 76, 76, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 76, 76, 0); }
+    }
+    
+    .speech-result {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      min-height: 80px;
+      margin-bottom: 2rem;
+      text-align: center;
+      border: 1px dashed var(--glass-border);
+      font-size: 1.2rem;
+    }
+    .result-badge {
+      display: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+    }
+    .result-badge.correct { display: inline-block; background: rgba(0, 204, 102, 0.2); color: var(--success); }
+    .result-badge.wrong { display: inline-block; background: rgba(255, 76, 76, 0.2); color: var(--danger); }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container animate-fade-in quiz-container">
+    <nav class="navbar glass-card" style="padding: 1rem; margin-bottom: 1.5rem;">
+      <div class="logo">
+        <i class="fa-solid fa-microphone-lines"></i>
+        <span>Voice Quiz Mode</span>
+      </div>
+      <div>
+        <button class="btn btn-secondary" style="padding: 0.5rem 1rem;" onclick="confirmExit()">Exit Quiz</button>
+      </div>
+    </nav>
+    
+    <div class="glass-card" id="quiz-area" style="display: none;">
+      
+      <div class="quiz-header">
+        <h3 style="color: var(--gray-light); margin: 0;">Question <span id="q-current">1</span> of <span id="q-total">5</span></h3>
+        <div class="timer" id="timer">
+          <i class="fa-regular fa-clock"></i> <span id="time-left">30</span>s
+        </div>
+      </div>
+      
+      <div class="question-block" id="question-text">
+        <!-- Question goes here -->
+      </div>
+      
+      <div class="mic-container">
+        <button class="mic-btn" id="mic-btn" onclick="toggleRecording()">
+          <i class="fa-solid fa-microphone"></i>
+        </button>
+        <p class="mt-2" id="mic-status" style="color: var(--gray-light)">Tap microphone and speak your answer</p>
+        
+        <div id="result-indicator" class="result-badge"></div>
+      </div>
+      
+      <div class="speech-result" id="speech-text">
+        <span style="color: var(--gray-light); font-style: italic;">Your speech output will appear here...</span>
+      </div>
+      
+      <div class="nav-buttons">
+        <button class="btn btn-primary" id="btn-next" style="width: auto; min-width: 150px;" onclick="nextQuestion()" disabled>Next <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+    
+    <div class="glass-card text-center" id="loading-area">
+      <h2 class="mb-2"><i class="fa-solid fa-spinner fa-spin text-gold"></i> Preparing Quiz...</h2>
+      <p style="color: var(--gray-light)">Loading voice questions.</p>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/voice.js"></script>
+</body>
+</html>

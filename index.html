@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - Smart AI Quiz</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .home-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .home-buttons .btn {
+      padding: 1.25rem;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-wrapper">
+    <div class="glass-card auth-card animate-fade-in text-center">
+      <div class="logo justify-center mb-3">
+        <i class="fa-solid fa-brain"></i>
+        <span>Smart AI Quiz</span>
+      </div>
+      <h2>Choose Login Type</h2>
+      <p class="mb-4" style="color: var(--gray-light)">Select the appropriate portal below</p>
+      <div class="home-buttons">
+        <button class="btn btn-primary" onclick="location.href='student-login.html'">
+          <i class="fa-solid fa-user-graduate"></i> Login as Student
+        </button>
+        <p class="text-center mt-2" style="font-size:0.9rem;color:var(--gray-light);">
+          New here? <a href="signup.html">Sign up as a student</a>
+        </p>
+        <button class="btn btn-secondary" onclick="location.href='admin-login.html'">
+          <i class="fa-solid fa-user-shield"></i> Login as Admin
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
