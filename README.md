@@ -4,6 +4,12 @@
 ## 📌 Project Description
 This project is a simple web-based Quiz Application. Users can register and log in to take quizzes, while the admin can add and manage quiz questions. The application runs completely on the client side using HTML, CSS, and JavaScript without any backend server.
 
+## Live Website
+https://selvameenasubramanian27-art.github.io/quiz-website
+
+## GitHub Repository
+https://github.com/selvameenasubramanian27-art/quiz-website
+
 ## 🚀 Features
 - User Signup and Login
 - Admin Login
@@ -18,6 +24,17 @@ This project is a simple web-based Quiz Application. Users can register and log 
 - CSS3
 - JavaScript (ES6)
 - Local Storage (for storing users and questions)
+
+## Screenshots
+
+### Login Page
+![Login](screenshots/login.png)
+
+### Quiz Page
+![dashboard](screenshots/dashboard.png)
+
+### Admin Panel
+![leaderboard](screenshots/leaderboard.png)
 
 ## 📂 Project Structure
 
@@ -38,15 +55,6 @@ quiz-website/
 │ └── admin.js
 
 
-## ▶️ How to Run the Project
-
-1. Download or clone this repository
-2. Open the project folder in VS Code
-3. Install Live Server extension (optional)
-4. Right click `index.html`
-5. Click **Open with Live Server**
-
-The project will run in your browser.
 
 ## 📈 Future Improvements
 - Database integration
@@ -54,6 +62,11 @@ The project will run in your browser.
 - Leaderboard system
 - Question categories
 - Better UI design
+- Timer based quiz
+- Multiple teachers creating quizzes
+- Result history for students
+- User authentication system
+
 
 ## 👨‍💻 Author
 Selvameena Subramanian  
